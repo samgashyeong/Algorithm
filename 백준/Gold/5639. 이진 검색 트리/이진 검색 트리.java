@@ -1,27 +1,34 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.math.BigInteger;
+// 자료구조 시간 때 배웠던 지식으로 오랜만에 1트라이만에 끝난 문제. 클래스를 이용하고 재귀를 요리조리 이용하면은 잘 풀 수 있는 문제였다.
+import java.util.*;
 
 public class Main {
 
     static ArrayList<Integer> list = new ArrayList<>();
 
-    static void f(int start, int end){ // 재귀 함수의 인자를 시작과 끝 인덱스만 받도록 수정
-        if(start > end) return; // 시작 인덱스가 끝 인덱스보다 크면 종료
+    static void f(int start, int end){
+        if(start > end){
+            return;
+        }
+        
+        //System.out.println(end + " " + size);
+        int startData = list.get(start);
 
-        int root = list.get(start); // 현재 서브트리의 루트
-
-        int rightSubtreeStart = start + 1; // 오른쪽 서브트리의 시작 인덱스
-
-        while(rightSubtreeStart <= end && list.get(rightSubtreeStart) < root) {
-            rightSubtreeStart++; // 오른쪽 서브트리의 시작을 찾음
+        int startMax = start+1;
+        for(int i=start+1;i<=end;i++){
+            if(startData < list.get(i)){
+                startMax = i;
+                break;
+            }
         }
 
-        f(start + 1, rightSubtreeStart - 1); // 왼쪽 서브트리 재귀 호출
-        f(rightSubtreeStart, end); // 오른쪽 서브트리 재귀 호출
-
-        System.out.println(root); // 후위 순회이므로 루트는 가장 마지막에 출력
+        //System.out.println(startMax);
+        f(start+1, startMax-1);
+        f(startMax, end);
+        System.out.println(startData);
     }
 
     public static void main(String[] args) throws IOException {
@@ -29,11 +36,16 @@ public class Main {
 
         String s;
         while (true){
-            s = br.readLine();
-            if(s == null || s.equals("")) break;
+            s=br.readLine();
+            if(s==null||s.equals("")) break;
             list.add(Integer.parseInt(s));
         }
 
-        f(0, list.size() - 1);
+        f(0, list.size()-1);
+        
+
+        // for(int i=0;i<list.size();i++){
+        //     System.out.println(list.get(i));
+        // }
     }
 }
