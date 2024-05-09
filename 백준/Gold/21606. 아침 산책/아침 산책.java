@@ -48,9 +48,10 @@ public class Main {
             if('1' == input.charAt(i)){
                 chk[i+1] = true;
                 dfs(1, i+1);
-                for(int j=0;j<n;j++){
-                    chk[i+1] = false;
-                }
+                chk[i+1] = false;
+//                for(int j=0;j<n;j++){
+//                    chk[j+1] = false;
+//                }
             }
         }
 
