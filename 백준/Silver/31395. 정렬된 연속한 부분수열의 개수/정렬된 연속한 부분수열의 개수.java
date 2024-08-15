@@ -16,10 +16,9 @@ public class Main {
             arr.add(Integer.parseInt(st.nextToken()));
         }
 
-        arr.add(-1);
         int targetArrange = 1;
         long sum = 0;
-        for(int i=1;i<=n;i++){
+        for(int i=1;i<n;i++){
             if(arr.get(i-1) < arr.get(i)){
                 targetArrange++;
             }
@@ -31,6 +30,6 @@ public class Main {
         }
 
         sum += (long) targetArrange * (targetArrange + 1) / 2;
-        System.out.println(sum-1);
+        System.out.println(sum);
     }
 }
