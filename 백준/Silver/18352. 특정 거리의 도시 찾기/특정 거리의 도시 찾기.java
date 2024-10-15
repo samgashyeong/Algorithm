@@ -89,8 +89,6 @@ public class Main {
         while(!que.isEmpty()){
             Pair cur = que.poll();
 
-            if(chk[cur.f]) continue;
-            chk[cur.f] = true;
             for(Pair next : map[cur.f]){
                 if(dist[next.f] > dist[cur.f]+next.s){
                     dist[next.f] = dist[cur.f] + next.s;
