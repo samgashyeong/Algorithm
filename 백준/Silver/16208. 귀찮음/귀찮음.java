@@ -31,7 +31,7 @@ public class Main {
 
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int sum = 0;
+        long sum = 0;
         for(int i=0;i<n;i++){
             int num = Integer.parseInt(st.nextToken());
             sum += num;
@@ -40,7 +40,7 @@ public class Main {
 
         Arrays.sort(arr);
 
-        int result = 0;
+        long result = 0;
         for(int i=0;i<n;i++){
             sum -= arr[i];
             //System.out.println(sum * arr[i]);
